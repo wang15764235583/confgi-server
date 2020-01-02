@@ -1,0 +1,22 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /mac/api
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/,http://localhost:8889/eureka/
+
+  instance:
+    lease-renewal-interval-in-seconds: 1 #每间隔1s，向服务端发送一次心跳，证明自己依然”存活
+    lease-expiration-duration-in-seconds: 1 #告诉服务端，如果我1s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
